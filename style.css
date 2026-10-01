@@ -1,0 +1,1132 @@
+/* =========================================================
+   Portfolio Website - Hamada Zein
+   ========================================================= */
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  /* Main Palette */
+  --sapphire: #0474c4;
+  --steel-blue: #5379ae;
+  --deep-teal: #2c444c;
+  --light-blue: #a8c4ec;
+  --deep-sapphire: #06457f;
+  --midnight: #262b40;
+
+  /* Neutral */
+  --white: #ffffff;
+  --light: #f5f8fc;
+  --lighter: #f8fafd;
+  --text: #475569;
+  --text-dark: #26364a;
+  --muted: #64748b;
+  --border: #d9e3f0;
+
+  /* Effects */
+  --shadow-sm: 0 5px 15px rgba(38, 43, 64, 0.06);
+  --shadow-md: 0 10px 30px rgba(6, 69, 127, 0.1);
+  --shadow-lg: 0 20px 50px rgba(6, 69, 127, 0.14);
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Transition */
+  --transition: all 0.3s ease;
+}
+
+/* =========================================================
+   2. GLOBAL
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--light-blue);
+  color: var(--midnight);
+}
+
+/* =========================================================
+   3. TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--midnight);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.text-primary {
+  color: var(--sapphire) !important;
+}
+
+.text-secondary {
+  color: var(--steel-blue) !important;
+}
+
+/* =========================================================
+   4. BUTTONS
+   ========================================================= */
+
+.btn {
+  border-radius: 10px;
+  padding: 11px 22px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--sapphire);
+  border-color: var(--sapphire);
+  color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--deep-sapphire);
+  border-color: var(--deep-sapphire);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(4, 116, 196, 0.25);
+}
+
+.btn-outline-primary {
+  color: var(--sapphire);
+  border-color: var(--sapphire);
+  background: transparent;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--sapphire);
+  border-color: var(--sapphire);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background-color: var(--midnight);
+  border-color: var(--midnight);
+}
+
+.btn-dark:hover {
+  background-color: var(--deep-teal);
+  border-color: var(--deep-teal);
+}
+
+/* =========================================================
+   5. NAVBAR
+   ========================================================= */
+
+#mainNavbar {
+  background: transparent;
+  padding: 18px 0;
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+#mainNavbar .navbar-brand {
+  color: var(--white);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+#mainNavbar .navbar-brand span {
+  color: var(--light-blue);
+}
+
+#mainNavbar .nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-left: 18px;
+  padding: 8px 0;
+}
+
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link.active {
+  color: var(--white);
+}
+
+#mainNavbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--light-blue);
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+#mainNavbar .nav-link:hover::after,
+#mainNavbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* Navbar ketika scroll */
+
+#mainNavbar.scrolled {
+  background: rgba(38, 43, 64, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 0;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+}
+
+#mainNavbar .navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 7px 10px;
+}
+
+#mainNavbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+#mainNavbar .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================================
+   6. HERO SECTION
+   ========================================================= */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    var(--deep-sapphire) 0%,
+    var(--steel-blue) 52%,
+    var(--deep-teal) 100%
+  );
+
+  color: var(--white);
+}
+
+/* Background decoration */
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(168, 196, 236, 0.12);
+  top: -220px;
+  right: -120px;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(4, 116, 196, 0.2);
+  bottom: -180px;
+  left: -120px;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section h1 {
+  color: var(--white);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.hero-section h1 span {
+  color: var(--light-blue);
+}
+
+.hero-section .lead {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.15rem;
+  max-width: 600px;
+}
+
+.hero-section .btn-outline-primary {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-section .btn-outline-primary:hover {
+  background: var(--white);
+  color: var(--deep-sapphire);
+  border-color: var(--white);
+}
+
+/* =========================================================
+   7. HERO IMAGE
+   ========================================================= */
+
+.hero-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  position: relative;
+  width: 340px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 30px;
+  border: 5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+/* Image decoration */
+
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 420px;
+  border: 2px solid var(--light-blue);
+  border-radius: 30px;
+  transform: rotate(6deg);
+  opacity: 0.5;
+}
+
+/* Floating cards */
+
+.floating-card {
+  position: absolute;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--midnight);
+  padding: 12px 18px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.floating-card i {
+  color: var(--sapphire);
+  margin-right: 7px;
+}
+
+.floating-card.card-one {
+  top: 50px;
+  left: -30px;
+}
+
+.floating-card.card-two {
+  bottom: 50px;
+  right: -30px;
+}
+
+/* =========================================================
+   8. SECTION
+   ========================================================= */
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.bg-light {
+  background-color: var(--light) !important;
+}
+
+/* Section heading */
+
+.section-title {
+  margin-bottom: 55px;
+}
+
+.section-title .subtitle {
+  display: inline-block;
+  color: var(--sapphire);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.section-title h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 15px;
+}
+
+.section-title p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* =========================================================
+   9. ABOUT
+   ========================================================= */
+
+.about-content h2 {
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: var(--text);
+}
+
+.about-highlight {
+  color: var(--sapphire);
+  font-weight: 600;
+}
+
+/* About card */
+
+.about-card {
+  position: relative;
+  padding: 30px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--light-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.about-card i {
+  font-size: 2rem;
+  color: var(--sapphire);
+  margin-bottom: 20px;
+}
+
+.about-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.profile-mini {
+  width: 115px;
+  height: 115px;
+  margin: 0 auto 18px;
+  padding: 5px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #0474c4, #a8c4ec);
+
+  box-shadow:
+    0 0 0 5px rgba(168, 196, 236, 0.25),
+    0 10px 25px rgba(6, 69, 127, 0.15);
+
+  overflow: hidden;
+}
+
+.profile-mini img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  display: block;
+
+  border: 3px solid #ffffff;
+}
+
+/* =========================================================
+   10. SKILLS
+   ========================================================= */
+
+.skill-card {
+  height: 100%;
+  padding: 30px 25px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--light-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background: rgba(4, 116, 196, 0.1);
+  color: var(--sapphire);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.skill-card h5 {
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Skill progress */
+
+.skill-progress {
+  margin-top: 20px;
+}
+
+.skill-progress .progress {
+  height: 7px;
+  background: #e7eef7;
+  border-radius: 20px;
+}
+
+.skill-progress .progress-bar {
+  background: linear-gradient(90deg, var(--sapphire), var(--steel-blue));
+  border-radius: 20px;
+}
+
+/* =========================================================
+   11. EXPERIENCE
+   ========================================================= */
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--light-blue);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--sapphire);
+  border: 4px solid var(--white);
+  box-shadow: 0 0 0 3px var(--light-blue);
+}
+
+.timeline-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.timeline-card:hover {
+  transform: translateX(5px);
+  border-color: var(--light-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-card .date {
+  display: inline-block;
+  color: var(--sapphire);
+  background: rgba(4, 116, 196, 0.08);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.timeline-card h4 {
+  margin-bottom: 8px;
+}
+
+.timeline-card h5 {
+  color: var(--steel-blue);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.timeline-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   12. PORTFOLIO
+   ========================================================= */
+
+.portfolio-card {
+  overflow: hidden;
+  height: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--light-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-image {
+  position: relative;
+  overflow: hidden;
+  height: 230px;
+  background: linear-gradient(135deg, var(--deep-sapphire), var(--steel-blue));
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.06);
+}
+
+.portfolio-content {
+  padding: 25px;
+}
+
+.portfolio-content h4 {
+  margin-bottom: 10px;
+}
+
+.portfolio-content p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.portfolio-tag {
+  display: inline-block;
+  background: rgba(4, 116, 196, 0.08);
+  color: var(--sapphire);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+/* =========================================================
+   13. CONTACT
+   ========================================================= */
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, var(--deep-sapphire), var(--deep-teal));
+
+  color: var(--white);
+}
+
+.contact-section h2 {
+  color: var(--white);
+}
+
+.contact-section p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Contact info */
+
+.contact-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.contact-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(168, 196, 236, 0.12);
+  color: var(--light-blue);
+  font-size: 1.2rem;
+}
+
+.contact-info h6 {
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Contact form */
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 35px;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-form .form-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.contact-form .form-control {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 12px 15px;
+  color: var(--midnight);
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--light-blue);
+  box-shadow: 0 0 0 4px rgba(168, 196, 236, 0.15);
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* =========================================================
+   14. SOCIAL MEDIA
+   ========================================================= */
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.social-links a:hover {
+  background: var(--sapphire);
+  border-color: var(--sapphire);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   15. FOOTER
+   ========================================================= */
+
+.footer {
+  background: var(--midnight);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 30px 0;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--light-blue);
+}
+
+.footer a:hover {
+  color: var(--white);
+}
+
+/* =========================================================
+   16. BADGES
+   ========================================================= */
+
+.badge-primary {
+  background: rgba(4, 116, 196, 0.1);
+  color: var(--sapphire);
+}
+
+.badge-blue {
+  background: rgba(168, 196, 236, 0.25);
+  color: var(--deep-sapphire);
+}
+
+/* =========================================================
+   17. DECORATIVE ELEMENTS
+   ========================================================= */
+
+.blue-line {
+  width: 60px;
+  height: 4px;
+  background: var(--sapphire);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--sapphire), var(--steel-blue));
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =========================================================
+   18. SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   19. CUSTOM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--steel-blue);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sapphire);
+}
+
+/* =========================================================
+   20. RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  #mainNavbar {
+    background: var(--midnight);
+    padding: 12px 0;
+  }
+
+  #mainNavbar .navbar-collapse {
+    margin-top: 15px;
+    padding: 15px 0;
+  }
+
+  #mainNavbar .nav-link {
+    margin-left: 0;
+    padding: 10px 0;
+  }
+
+  #mainNavbar .nav-link::after {
+    display: none;
+  }
+
+  .hero-section {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: auto;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-image {
+    width: 300px;
+    height: 370px;
+  }
+
+  .hero-image-wrapper::before {
+    width: 300px;
+    height: 370px;
+  }
+
+  .floating-card.card-one {
+    left: 0;
+  }
+
+  .floating-card.card-two {
+    right: 0;
+  }
+
+  .section-padding {
+    padding: 80px 0;
+  }
+}
+
+/* =========================================================
+   21. RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .section-padding {
+    padding: 70px 0;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding-top: 110px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.7rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-section .lead {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image-wrapper {
+    margin-top: 50px;
+  }
+
+  .hero-image {
+    width: 260px;
+    height: 330px;
+  }
+
+  .hero-image-wrapper::before {
+    width: 260px;
+    height: 330px;
+  }
+
+  .floating-card {
+    font-size: 0.75rem;
+    padding: 9px 12px;
+  }
+
+  .floating-card.card-one {
+    left: 5px;
+    top: 30px;
+  }
+
+  .floating-card.card-two {
+    right: 5px;
+    bottom: 30px;
+  }
+
+  .about-card,
+  .skill-card,
+  .timeline-card,
+  .contact-form {
+    padding: 22px;
+  }
+
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  .timeline-item::before {
+    left: -25px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .portfolio-image {
+    height: 200px;
+  }
+
+  .contact-section {
+    text-align: left;
+  }
+
+  .contact-form {
+    margin-top: 30px;
+  }
+}
+
+/* =========================================================
+   22. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-section .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .hero-image {
+    width: 220px;
+    height: 290px;
+  }
+
+  .hero-image-wrapper::before {
+    width: 220px;
+    height: 290px;
+  }
+
+  .floating-card.card-one {
+    left: -5px;
+  }
+
+  .floating-card.card-two {
+    right: -5px;
+  }
+
+  .section-padding {
+    padding: 60px 0;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .social-links {
+    margin-top: 20px;
+  }
+}
+
+/* =========================================================
+   23. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
